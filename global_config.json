@@ -1,0 +1,9 @@
+{
+  "log_dir": "./logs",
+  "backup_dir": "./backups",
+  "config_dir": "./config",
+  "process_check": false,
+
+  //23h in seconds
+  "backup_threshold": 82800
+}
