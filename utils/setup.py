@@ -50,8 +50,5 @@ def populate_directories(global_config):
 
     print("Done!\n")
 
-run()
-
-
-
-
+if __name__ == "__main__":
+   run()
