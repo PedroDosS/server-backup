@@ -3,7 +3,7 @@ import os, time
 
 Config = safe_import("config_loader").Config
 Logger = safe_import("logger").Logger
-backup_server = safe_import("backup-servers").backup_server
+backup_server = safe_import("backup_servers").backup_server
 
 def run(global_config, logger):
    logger.write("Starting autobackups...")
