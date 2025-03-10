@@ -3,6 +3,7 @@
   "backup_dir": "./backups",
   "config_dir": "./config",
   "process_check": false,
+  "compression_method": "xztar",
 
   //23h in seconds
   "backup_threshold": 82800
