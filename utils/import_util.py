@@ -1,4 +1,7 @@
 from importlib import import_module, util
+import sys, os
+
+sys.path.append(os.path.dirname(__file__))
 
 def safe_import(module_name):
     try:
