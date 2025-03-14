@@ -35,7 +35,7 @@ class Logger:
          self.sublog.write(message)
 
       if not message == "":
-         message = ("   " * self.indentation) +  message
+         message = ("  " * self.indentation) +  message
       message = self.__add_date(message)
 
       if not self.is_sublogger:

@@ -2,7 +2,7 @@
    "categories": [
       {
          "name": "Backups",
-         "tooltip": "Configure global settings related to backups.",
+         "tooltip": "Configure settings related to backups.",
          "settings": [
             {
                "name": "Enable Local Backups [Setting Currently Unused]",
@@ -17,16 +17,6 @@
                "value": false
             },
             {
-               "name": "Backup Directory",
-               "tooltip": "Configure where log files are stored by default",
-               "id": "backup_dir",
-               "value": "./backups",
-               "require": {
-                  "enable_local_backups": true,
-                  "enable_cloud_backups": true
-               }
-            },
-            {
                "name": "Enable Process Check [Setting Currently Unused]",
                "tooltip": "Checks if the server is offline before backing it up",
                "id": "enable_process_check",
@@ -37,10 +27,30 @@
                }
             },
             {
+               "name": "Server Directory",
+               "tooltip": "Configure where the server directory's location",
+               "id": "server_dir",
+               "value": "ENTER YOUR SERVER DIRECTORY HERE!!",
+               "require": {
+                  "enable_local_backups": true,
+                  "enable_cloud_backups": true
+               }
+            },
+            {
+               "name": "Backup Directory",
+               "tooltip": "Configure where log files are stored by default",
+               "id": "backup_dir",
+               "value": "./backups",
+               "require": {
+                  "enable_local_backups": true,
+                  "enable_cloud_backups": true
+               }
+            },
+            {
                "name": "Compression Method",
                "tooltip": "Checks if the server is offline before backing it up",
                "id": "compression_method",
-               "value": "xztar",
+               "value": "zip",
                "require": {
                   "enable_local_backups": true,
                   "enable_cloud_backups": true
@@ -60,7 +70,7 @@
       },
       {
          "name": "Logs",
-         "tooltip": "Configure global settings related to logging.",
+         "tooltip": "Configure settings related to logging.",
          "settings": [
             {
                "name": "Enable Logging [Setting Currently Unused]",
@@ -70,24 +80,12 @@
             },
             {
                "name": "Log Directory",
-               "tooltip": "Configure where log files are stored by default",
+               "tooltip": "Configure where log files are stored",
                "id": "log_dir",
                "value": "./logs",
                "require": {
                   "enable_logging": true
                }
-            }
-         ]
-      },
-      {
-         "name": "Miscellaneous",
-         "tooltip": "Miscellaneous global config options.",
-         "settings": [
-            {
-               "name": "Config Directory",
-               "tooltip": "Configure where config files are stored",
-               "id": "config_dir",
-               "value": "./config"
             }
          ]
       }

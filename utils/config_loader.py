@@ -21,7 +21,14 @@ class Config:
 
     def _load(self, config_path):
         with open(config_path) as config_file:
-            self.config.update(json.load(config_file))
+            data = json.load(config_file)
+
+            for category in data["categories"]:
+                for setting in category["settings"]:
+                    id = setting["id"]
+                    value = setting["value"]
+
+                    self.config[id] = value
 
         self.full_name = os.path.basename(config_path)
         self.name = os.path.splitext(self.full_name)[0]

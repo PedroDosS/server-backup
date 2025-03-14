@@ -31,29 +31,28 @@ def run(global_config, logger):
 
 
 def autobackup(config, logger):
-   logger.indent()
-
    logger.write("Autobackup: " + config.name)
+
+   logger.indent()
    server_dir = config.read("server_dir")
    backup_dir = config.read("backup_dir")
 
    if not os.path.exists(server_dir):
       logger.write("Could not find server directory!")
+      logger.unindent()
       return
 
    last_backup = last_modified(backup_dir)
    last_server_run = last_modified(server_dir)
 
-   print("Last Backup:", last_backup)
-   print("Last Server Run:", last_server_run)
-   print("Threshold:", config.read("backup_threshold"))
-
    if last_backup > last_server_run:
       logger.write("Backup is up to date, no action needed!")
+      logger.unindent()
       return
 
    if time.time() < last_backup + config.read("backup_threshold"):
       logger.write("Backup is recent, no action needed!")
+      logger.unindent()
       return
 
    backup_server(config, logger)

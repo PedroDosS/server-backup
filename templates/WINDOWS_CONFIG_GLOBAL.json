@@ -40,7 +40,7 @@
                "name": "Compression Method",
                "tooltip": "Checks if the server is offline before backing it up",
                "id": "compression_method",
-               "value": "xztar",
+               "value": "zip",
                "require": {
                   "enable_local_backups": true,
                   "enable_cloud_backups": true
