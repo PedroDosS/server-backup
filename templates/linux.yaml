@@ -1,15 +1,13 @@
 # Any settings not defined here will default to the global profile
 
 # -- Backup Settings -- #
-server-directory:  <-- SERVER DIRECTORY HERE -->
-
+server-directory:  4
 enable-local-backups: true
 enable-cloud-backups: true # currently unused
 enable-process-check: true # currently unused
 backup-directory: "./backups"
-compression-method: "xztar"
+compression-method: "xztar" # "zip" | "tar" | "gztar" | "bztar" | "xztar"
 backup-frequency-secs: 86400
-
 
 # -- Log Settings -- #
 enable-logs: true # currently unsued

@@ -7,9 +7,8 @@ enable-local-backups: true
 enable-cloud-backups: true # currently unused
 enable-process-check: true # currently unused
 backup-directory: "./backups"
-compression-method: "zip"
+compression-method: "zip" # "zip" | "tar" | "gztar" | "bztar" | "xztar"
 backup-frequency-secs: 86400
-
 
 # -- Log Settings -- #
 enable-logs: true # currently unsued

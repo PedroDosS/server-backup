@@ -72,7 +72,3 @@ if __name__ == "__main__":
    backup_servers(global_config, global_logger)
 
    global_logger.close()
-
-
-
-
