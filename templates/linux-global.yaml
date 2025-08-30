@@ -1,0 +1,17 @@
+# Global profile values
+# NOTE: These are overwritten by individual backup profiles
+
+# -- Backup Settings -- #
+enable-local-backups: true
+enable-cloud-backups: true # currently unused
+enable-process-check: true # currently unused
+backup-directory: "./backups"
+compression-method: "xztar"
+backup-frequency-secs: 86400
+
+# -- Log Settings -- #
+enable-logging: true # currently unsued
+log-directory: "./logs"
+
+# -- Backup Profile Settings -- #
+profile-directory: "./profiles"

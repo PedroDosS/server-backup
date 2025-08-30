@@ -1,6 +1,6 @@
 from import_util import safe_import
 from pathlib import Path
-import subprocess, os, sys, shutil, platform
+import subprocess, os, shutil, platform
 
 def run():
     install_dependencies()
@@ -19,13 +19,13 @@ def install_dependencies():
 def load_config():
     print("Loading config...")
 
-    if not os.path.exists("global_config.json"):
+    if not os.path.exists("global-profile.yaml"):
         if platform.system() == "Windows":
-            config_name = "WINDOWS_CONFIG_GLOBAL.json"
+            config_name = "windows-global.yaml"
         else:
-            config_name = "LINUX_CONFIG_GLOBAL.json"
+            config_name = "linux-global.yaml"
 
-        shutil.copy2(os.path.join("templates", config_name), os.path.join("global_config.json"))
+        shutil.copy2(os.path.join("templates", config_name), os.path.join("global-profile.yaml"))
 
     print("Done!\n")
     return safe_import("config_loader").Config()
@@ -36,9 +36,9 @@ def create_directories(global_config):
         Path(dir_path).mkdir(parents=True, exist_ok = True)
 
     print("Creating directories...")
-    mkdir("log_dir", global_config)
-    mkdir("backup_dir", global_config)
-    mkdir("config_dir", global_config)
+    mkdir("log-directory", global_config)
+    mkdir("backup-directory", global_config)
+    mkdir("profile-directory", global_config)
     print("Done!\n")
 
 def populate_directories(global_config):
@@ -49,11 +49,11 @@ def populate_directories(global_config):
 
     if not os.listdir(config_dir):
         if platform.system() == "Windows":
-            config_name = "WINDOWS_CONFIG.json"
+            config_name = "windows.yaml"
         else:
-            config_name = "LINUX_CONFIG.json"
+            config_name = "linux.yaml"
 
-        shutil.copy2(os.path.join("templates", config_name), os.path.join(config_dir, "config1.json"))
+        shutil.copy2(os.path.join("templates", config_name), os.path.join(config_dir, "config1.yaml"))
 
 
     print("Done!\n")
