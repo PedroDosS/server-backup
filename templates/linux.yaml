@@ -1,7 +1,7 @@
 # Any settings not defined here will default to the global profile
 
 # -- Backup Settings -- #
-server-directory: ENTER YOUR SERVER DIRECTORY HERE
+server-directory:  <-- SERVER DIRECTORY HERE -->
 
 enable-local-backups: true
 enable-cloud-backups: true # currently unused

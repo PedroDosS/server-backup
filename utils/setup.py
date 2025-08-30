@@ -20,13 +20,13 @@ def install_dependencies():
 def load_config():
     print("Loading config...")
 
-    if not os.path.exists("global-profile.yaml"):
+    if not os.path.exists("global-config.yaml"):
         if platform.system() == "Windows":
             system_profile = "windows-global.yaml"
         else:
             system_profile = "linux-global.yaml"
 
-        shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile).resolve(), Path(__file__, "..", "..", "global-profile.yaml").resolve())
+        shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile).resolve(), Path(__file__, "..", "..", "global-config.yaml").resolve())
 
     print("Done!\n")
     return config.Config()
@@ -52,9 +52,6 @@ def populate_directories(global_config):
             system_profile = "windows.yaml"
         else:
             system_profile = "linux.yaml"
-
-        print(Path(TEMPLATE_DIR_PATH, system_profile))
-        print(Path(config_dir, "profile.yaml"))
 
         shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile), Path(config_dir, "profile.yaml"))
     print("Done!\n")

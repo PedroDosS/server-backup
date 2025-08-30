@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from yaml import load, Loader
    
-GLOBAL_CONFIG_PATH = Path(os.path.join(os.path.abspath(__file__), "..", "..", "global-profile.yaml")).resolve()
+GLOBAL_CONFIG_PATH = Path(os.path.join(os.path.abspath(__file__), "..", "..", "global-config.yaml")).resolve()
 
 class Config:
     config = {}
@@ -24,8 +24,10 @@ class Config:
             # Resolve directory paths to be absolute
             if 'server-directory' in config:
                 config['server-directory'] = Path(__file__, "..", "..", config['server-directory']).resolve()
+            if 'profile-directory' in config:
+                config['profile-directory'] = Path(__file__, "..", "..", config['profile-directory']).resolve()
+
             config['log-directory'] = Path(__file__, "..", "..", config['log-directory']).resolve()
-            config['profile-directory'] = Path(__file__, "..", "..",config['profile-directory']).resolve()
             config['backup-directory'] = Path(__file__, "..", "..", config['backup-directory']).resolve()
 
             self.config = config
