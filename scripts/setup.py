@@ -1,6 +1,7 @@
 from pathlib import Path
-import subprocess, os, shutil, platform
-import config
+import subprocess, os, shutil, platform, sys
+
+sys.path.append(os.path.abspath(Path(__file__, "..", "..")))
 
 TEMPLATE_DIR_PATH = Path(__file__, "..", "..", "templates").resolve()
 
@@ -29,6 +30,7 @@ def load_config():
         shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile).resolve(), Path(__file__, "..", "..", "global-config.yaml").resolve())
 
     print("Done!\n")
+    from utils import config
     return config.Config()
 
 def create_directories(global_config):

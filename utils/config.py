@@ -7,10 +7,9 @@ GLOBAL_CONFIG_PATH = Path(os.path.join(os.path.abspath(__file__), "..", "..", "g
 class Config:
     config = {}
     name = ""
-    full_name = ""
 
     def __init__(self, profile_path=None):
-        # load global backup profile first
+        # load global config first
         self._load(GLOBAL_CONFIG_PATH)
 
         # then, load individual backup profile
@@ -32,8 +31,7 @@ class Config:
 
             self.config = config
             
-        self.full_name = os.path.basename(config_path)
-        self.name = os.path.splitext(self.full_name)[0]
+        self.name = os.path.splitext(os.path.basename(config_path))[0]
 
     def read(self, key):
         if key in self.config:

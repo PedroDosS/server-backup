@@ -1,6 +1,8 @@
-import os, shutil
+import os, sys, shutil
 from datetime import datetime
+from pathlib import Path
 
+sys.path.append(os.path.abspath(Path(__file__, "..", "..")))
 from utils import config, logger
 
 def backup_servers(global_config, logger):
@@ -39,7 +41,7 @@ def backup_server(config, logger):
    server_directory = config.read("server-directory")
 
    logger.indent()
-   logger.write("Config: " + config.full_name)
+   logger.write("Config: " + config.name + ".yaml")
    logger.write("Input: " + str(server_directory))
    logger.write("Output: " + output_path + ext)
 

@@ -1,6 +1,9 @@
-import os, time
-from utils import config, logger
+import os, time, sys
 import backup_servers
+from pathlib import Path
+
+sys.path.append(os.path.abspath(Path(__file__, "..", "..")))
+from utils import config, logger
 
 def run(global_config, logger):
    logger.write("Starting autobackups...")
@@ -34,7 +37,7 @@ def autobackup(config, logger):
    backup_dir = config.read("backup-directory")
 
    if not os.path.exists(server_dir):
-      logger.write("Could not find server directory!")
+      logger.write("Could not find server directory! (" + str(server_dir) + ")")
       logger.unindent()
       return
 
