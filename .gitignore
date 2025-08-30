@@ -3,7 +3,7 @@ __pycache__
 *.kate-swp
 *.txt
 
-config
+profiles
 backups
 logs
 global-profile.yaml

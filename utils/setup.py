@@ -1,6 +1,8 @@
-from import_util import safe_import
 from pathlib import Path
 import subprocess, os, shutil, platform
+import config
+
+TEMPLATE_DIR_PATH = Path(__file__, "..", "..", "templates").resolve()
 
 def run():
     install_dependencies()
@@ -13,7 +15,6 @@ def install_dependencies():
     subprocess.run(["pip3", "install", "--upgrade", "pipreqs"])#, stdout=subprocess.DEVNULL)
     subprocess.run(["pipreqs", "--ignore", ".venv,__pycache__", "--force"])#, stdout=subprocess.DEVNULL)
     subprocess.run(["pip3", "install", "--upgrade", "-r", "requirements.txt"])#, stdout=subprocess.DEVNULL)
-    subprocess.run(["pip3", "install", "--upgrade", "pyjson5"])#, stdout=subprocess.DEVNULL)
     print("Done!\n")
 
 def load_config():
@@ -21,14 +22,14 @@ def load_config():
 
     if not os.path.exists("global-profile.yaml"):
         if platform.system() == "Windows":
-            config_name = "windows-global.yaml"
+            system_profile = "windows-global.yaml"
         else:
-            config_name = "linux-global.yaml"
+            system_profile = "linux-global.yaml"
 
-        shutil.copy2(os.path.join("templates", config_name), os.path.join("global-profile.yaml"))
+        shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile).resolve(), Path(__file__, "..", "..", "global-profile.yaml").resolve())
 
     print("Done!\n")
-    return safe_import("config_loader").Config()
+    return config.Config()
 
 def create_directories(global_config):
     def mkdir(dir_type, global_config):
@@ -44,18 +45,18 @@ def create_directories(global_config):
 def populate_directories(global_config):
     print("Populating directories...")
 
-    config_dir = global_config.read("config_dir")
-    template_dir = "templates"
+    config_dir = global_config.read("profile-directory")
 
     if not os.listdir(config_dir):
         if platform.system() == "Windows":
-            config_name = "windows.yaml"
+            system_profile = "windows.yaml"
         else:
-            config_name = "linux.yaml"
+            system_profile = "linux.yaml"
 
-        shutil.copy2(os.path.join("templates", config_name), os.path.join(config_dir, "config1.yaml"))
+        print(Path(TEMPLATE_DIR_PATH, system_profile))
+        print(Path(config_dir, "profile.yaml"))
 
-
+        shutil.copy2(Path(TEMPLATE_DIR_PATH, system_profile), Path(config_dir, "profile.yaml"))
     print("Done!\n")
 
 if __name__ == "__main__":
